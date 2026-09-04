@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../apiConfig';
 import './Login.css';
 
 function Login({ onLogin }) {
@@ -53,7 +54,7 @@ function Login({ onLogin }) {
       formData.append('username', username);
       formData.append('password', password);
 
-      const response = await axios.post('http://localhost:8000/token', formData);
+      const response = await axios.post(`${API_BASE_URL}/token`, formData);
       onLogin(response.data.access_token);
     } catch (err) {
       setError('Invalid credentials');

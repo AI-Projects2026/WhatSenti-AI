@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../apiConfig';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import './Dashboard.css';
@@ -70,7 +71,7 @@ function Dashboard({ token, onLogout }) {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:8000/analyze', formData, {
+      const response = await axios.post(`${API_BASE_URL}/analyze`, formData, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setResults(response.data);
@@ -95,7 +96,7 @@ function Dashboard({ token, onLogout }) {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/analyze-text',
+        `${API_BASE_URL}/analyze-text`,
         { text: singleText },
         { headers: { 'Authorization': `Bearer ${token}` } }
       );
