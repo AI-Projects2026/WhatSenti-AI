@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-multipart
+textblob
+pandas
+pyjwt
+python-jose
+python-dotenv
